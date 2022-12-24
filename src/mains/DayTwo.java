@@ -26,10 +26,102 @@ package mains;
 //
 //        What would your total score be if everything goes exactly according to your strategy guide?
 
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.List;
+
 public class DayTwo {
 
     public static void main(String[] args) {
 
+        // INPUTS:
+        //    two columns ->
+        //          left column is what the opponent has played (A, B, C)
+        //          right column we guess is what should be played in response (X, Y, Z)
 
+        // psuedo:
+        //      import file
+        //      read file
+        //      row by row, determine what opponent chose, then what we chose
+        //      utilize conversion methods to determine win/draw/loss and score
+
+        try {
+
+            int totalScore = 0;
+
+            Path path = Paths.get("C:\\Users\\jakeb\\OneDrive\\Documents\\CareerDevs\\cohort18\\elf_rps.txt");
+            List<String> lines = Files.readAllLines(path, StandardCharsets.UTF_8);
+
+            for (String line : lines) {
+                char myInput = line.charAt(2);
+
+                char otherIput = line.charAt(0);
+
+                totalScore += scoreRound(charConversion(otherIput), charConversion(myInput));
+                System.out.println(totalScore);
+            }
+        } catch (Exception e) {
+            System.out.println("Error occurred. Check inputs.");
+        }
+
+    }
+
+    public static String charConversion(char c) {
+        char c1 = c;
+        String rps = "";
+
+        if (c1 == 'A' || c1 == 'a' || c1 == 'X' || c1 == 'x') {
+            rps = "Rock";
+        } else if(c1 == 'B' || c1 == 'b' || c1 == 'Y' || c1 == 'y') {
+            rps = "Paper";
+        } else if (c1 == 'C' || c1 == 'c' || c1 == 'Z' || c1 == 'z') {
+            rps = "Scissors";
+        } else {
+            System.out.println("Invalid character presented, check input.");
+        }
+        return rps;
+    }
+
+    public static int roundValue(String rps) {
+        int value = 0;
+        switch (rps) {
+            case "Rock":
+                value = 1;
+                break;
+            case "Paper":
+                value = 2;
+                break;
+            case "Scissors":
+                value = 3;
+                break;
+        }
+        return value;
+    }
+
+    public static boolean isWin(String opponent, String me) {
+        boolean won = false;
+
+        // Using enhanced switch statement
+        switch (opponent) {
+            case "Rock" -> won = me.equals("Paper");
+            case "Paper" -> won = me.equals("Scissors");
+            case "Scissors" -> won = me.equals("Rock");
+        }
+        return won;
+    }
+
+    public static boolean isDraw(String opponent, String me) {
+
+        return (opponent.equals(me));
+    }
+
+    public static int scoreRound(String opponent, String me) {
+        int score = roundValue(me);
+        if (isWin(opponent, me)) { score += 6; }
+        else if (isDraw(opponent, me)) { score += 3; }
+        return score;
     }
 }
