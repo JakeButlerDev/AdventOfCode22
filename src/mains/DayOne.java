@@ -29,45 +29,63 @@ package mains;
 //
 //        Find the Elf carrying the most Calories. How many total Calories is that Elf carrying?
 
-import java.io.*;
-import java.net.URL;
-import java.nio.charset.Charset;
+import java.io.File;
+import java.io.FileReader;
+import java.net.URI;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
 
 public class DayOne {
 
     public static void main(String[] args) {
-        // JSON object of Elf data
-        // attribute unskipped lines as same Elf, skipped lines start a new Elf
-        // want to find the Elf holding the most calories
+        // INPUTS:
+        //      text file ->
+        //          blank line, representing a new elf
+        //          integer, denoting how many calories are in an elf's inventory
 
-        // PSEUDO
-        // Read data
-        // Initiate max_value at 0
-        // sum individual Elves' total calories held
-        // while summing, if current Elf's calories is greater than max_value, overwrite max
-        // Print out max calories held and which number Elf for fun
 
-//        try {
-//            int max_Calories = 0;
-//            String line;
-//            int doubleLineBreak = 0;
-//            int currentElfValue = 0;
-//            BufferedReader reader = new BufferedReader(new FileReader("C:\\Users\\jakeb\\OneDrive\\Documents\\CareerDevs\\cohort18\\elf_calories.txt"));
-//            while (doubleLineBreak < 2) {
-//
-//                if (!reader.readLine().equals("")){
-//                    int currentLineVal = Integer.parseInt(reader.readLine().trim());
-//                    currentElfValue += currentLineVal;
-//                    if (reader.lines())
-//                }
-//            }
-//
-//
-//            reader.close();
-//
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
+        // Psuedo:
+        //      Load file
+        //      Read file line by line
+        //      Identify if line is either an integer or a blank space
+
+        try {
+
+            Path path = Paths.get("C:\\Users\\jakeb\\OneDrive\\Documents\\CareerDevs\\cohort18\\elf_calories.txt");
+            List<String> lines = Files.readAllLines(path, StandardCharsets.UTF_8);
+
+            // Initialize variables to store data
+            int elfCalories = 0;
+            int snackCalories = 0;
+            int elfMaxCalories = 0;
+
+            for (String line: lines) {
+
+                if (line.equals("")) {
+//                    System.out.println("Elf total: " + elfCalories);
+                    if (elfCalories > elfMaxCalories) { elfMaxCalories = elfCalories;}
+                    elfCalories = 0;
+                } else {
+                    snackCalories = Integer.parseInt(line);
+                    elfCalories += snackCalories;
+                    System.out.println(snackCalories);
+                    snackCalories = 0;
+                }
+            }
+
+            if (elfCalories > elfMaxCalories) { elfMaxCalories = elfCalories;} // Checking the very last elf at end of file
+
+            // Print last line elf total and total max elf calories
+//            System.out.println("Elf total: " + elfCalories);
+            System.out.println("Elf max calories: " + elfMaxCalories);
+        } catch (Exception e) {
+            System.out.println("Error: File note found. Check file path.");
+        }
 
 
     }

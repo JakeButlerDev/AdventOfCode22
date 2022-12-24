@@ -35,34 +35,34 @@ import java.util.ArrayList;
 
 public class DayThree {
 
-    public static void main(String[] args) {
-        String ruck = "CrZsJsPPZsGzwwsLwLmpwMDw";
-        int totalSack = ruck.length();
-        String sackPartOne = ruck.substring(0, totalSack/2);
-        String sackPartTwo = ruck.substring(totalSack/2, totalSack);
-        char errorGift = ' ';
-        int errorGiftValue = 0;
-
-        for (int i = 0; i < sackPartOne.length(); i++) {
-            for (int j = 0; j < sackPartTwo.length(); j++) {
-                if (sackPartTwo.charAt(j) == sackPartOne.charAt(i)) {
-                    errorGift = sackPartOne.charAt(i);
-                    break;
-                }
-            }
-        }
-        // Now need to convert character into value, a-z = 1-26,    A-Z = 27-52
-
-        System.out.println(errorGift + " " + errorGiftValue);
-    }
-
-    public static int computeCharVal(char a) {
-        // Unique values of characters, cannot find built-in conversion
-        // Hard code math logic with Arrays
-
-        ArrayList<Character> smallAlphaArray = new ArrayList<>();
-        int charVal = a;    // Gives ascii value
-
-        return charVal;
-    }
+//    public static void main(String[] args) {
+//        String ruck = "CrZsJsPPZsGzwwsLwLmpwMDw";
+//        int totalSack = ruck.length();
+//        String sackPartOne = ruck.substring(0, totalSack/2);
+//        String sackPartTwo = ruck.substring(totalSack/2, totalSack);
+//        char errorGift = ' ';
+//        int errorGiftValue = 0;
+//
+//        for (int i = 0; i < sackPartOne.length(); i++) {
+//            for (int j = 0; j < sackPartTwo.length(); j++) {
+//                if (sackPartTwo.charAt(j) == sackPartOne.charAt(i)) {
+//                    errorGift = sackPartOne.charAt(i);
+//                    break;
+//                }
+//            }
+//        }
+//        // Now need to convert character into value, a-z = 1-26,    A-Z = 27-52
+//
+//        System.out.println(errorGift + " " + errorGiftValue);
+//    }
+//
+//    public static int computeCharVal(char a) {
+//        // Unique values of characters, cannot find built-in conversion
+//        // Hard code math logic with Arrays
+//
+//        ArrayList<Character> smallAlphaArray = new ArrayList<>();
+//        int charVal = a;    // Gives ascii value
+//
+//        return charVal;
+//    }
 }
