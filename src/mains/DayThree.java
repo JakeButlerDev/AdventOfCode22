@@ -31,38 +31,96 @@ package mains;
 //
 //        Find the item type that appears in both compartments of each rucksack. What is the sum of the priorities of those item types?
 
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.List;
 
 public class DayThree {
 
-//    public static void main(String[] args) {
-//        String ruck = "CrZsJsPPZsGzwwsLwLmpwMDw";
-//        int totalSack = ruck.length();
-//        String sackPartOne = ruck.substring(0, totalSack/2);
-//        String sackPartTwo = ruck.substring(totalSack/2, totalSack);
-//        char errorGift = ' ';
-//        int errorGiftValue = 0;
-//
-//        for (int i = 0; i < sackPartOne.length(); i++) {
-//            for (int j = 0; j < sackPartTwo.length(); j++) {
-//                if (sackPartTwo.charAt(j) == sackPartOne.charAt(i)) {
-//                    errorGift = sackPartOne.charAt(i);
-//                    break;
-//                }
-//            }
-//        }
-//        // Now need to convert character into value, a-z = 1-26,    A-Z = 27-52
-//
-//        System.out.println(errorGift + " " + errorGiftValue);
-//    }
-//
-//    public static int computeCharVal(char a) {
-//        // Unique values of characters, cannot find built-in conversion
-//        // Hard code math logic with Arrays
-//
-//        ArrayList<Character> smallAlphaArray = new ArrayList<>();
-//        int charVal = a;    // Gives ascii value
-//
-//        return charVal;
-//    }
+    public static void main(String[] args) {
+
+        // INPUTS:
+        //      String, built from two different compartments
+        //      Each char in compartment strings are a different item
+        //      Rucksack string will always be an even number length, split evenly down the middle to denote the separation of compartments
+
+        // psuedo:
+        //      Get File
+        //      Read file line by line
+        //      Method to separate the two compartments of the rucksack string
+        //      Method to identify items that both compartments contain
+        //      Certain items are prioritized over others, will need a method to determine this
+        //      Sum priority of all matching items, output sum
+
+
+
+        try {
+            Path path = Paths.get("C:\\Users\\jakeb\\OneDrive\\Documents\\CareerDevs\\cohort18\\elf_rucksacks.txt");
+            List<String> lines = Files.readAllLines(path, StandardCharsets.UTF_8);
+
+            // Initialize sum variable
+            int total = 0;
+
+            // Iterate through lines in file
+            for (String line: lines) {
+
+                // get compartments of rucksack
+                String left = getLeftCompartment(line);
+                String right = getRightCompartment(line);
+                // get same item between compartments
+                char item = getSameItem(left, right);
+                // get item value, add to total variable
+                total += getItemPriority(item);
+
+                System.out.println(total);
+            }
+        } catch (Exception e) {
+            System.out.println("Error occurred. Troubleshoot.");
+        }
+
+    }
+
+    public static String getLeftCompartment(String rucksack) {
+        int totalSack = rucksack.length();
+
+        return rucksack.substring(0, totalSack/2);
+    }
+
+    public static String getRightCompartment(String rucksack) {
+        int totalSack = rucksack.length();
+
+        return rucksack.substring(totalSack/2, totalSack);
+    }
+
+    public static char getSameItem(String leftCompartment, String rightCompartment) {
+        char errorGift = ' ';
+
+
+        for (int i = 0; i < leftCompartment.length(); i++) {
+            for (int j = 0; j < rightCompartment.length(); j++) {
+                if (rightCompartment.charAt(j) == leftCompartment.charAt(i)) {
+                    errorGift = leftCompartment.charAt(i);
+                    break;
+                }
+            }
+        }
+        return errorGift;
+    }
+
+    public static int getItemPriority(char item) {
+        // Cast char to an int in order to get decimal value of char
+        int itemValue = (int) item;
+
+        // Need to perform different arithmetic operations if character is upper or lower case
+        if(Character.isLowerCase(item)) {
+            itemValue -= 96;
+        } else {
+            itemValue -= 38;
+        }
+
+        return itemValue;
+    }
 }
