@@ -50,16 +50,20 @@ public class DayTwo {
 
         try {
 
+            // Initialize sum variable
             int totalScore = 0;
 
             Path path = Paths.get("C:\\Users\\jakeb\\OneDrive\\Documents\\CareerDevs\\cohort18\\elf_rps.txt");
             List<String> lines = Files.readAllLines(path, StandardCharsets.UTF_8);
 
+            // Iterate through each line
             for (String line : lines) {
+                // Set opponent char and my char
                 char myInput = line.charAt(2);
 
                 char otherIput = line.charAt(0);
 
+                // Add current score round to running total
                 totalScore += scoreRound(charConversion(otherIput), charConversion(myInput));
                 System.out.println(totalScore);
             }
@@ -70,14 +74,15 @@ public class DayTwo {
     }
 
     public static String charConversion(char c) {
-        char c1 = c;
+        // Initialize return variable
         String rps = "";
 
-        if (c1 == 'A' || c1 == 'a' || c1 == 'X' || c1 == 'x') {
+        // Set rps to certain string depending on parameter value
+        if (c == 'A' || c == 'a' || c == 'X' || c == 'x') {
             rps = "Rock";
-        } else if(c1 == 'B' || c1 == 'b' || c1 == 'Y' || c1 == 'y') {
+        } else if(c == 'B' || c == 'b' || c == 'Y' || c == 'y') {
             rps = "Paper";
-        } else if (c1 == 'C' || c1 == 'c' || c1 == 'Z' || c1 == 'z') {
+        } else if (c == 'C' || c == 'c' || c == 'Z' || c == 'z') {
             rps = "Scissors";
         } else {
             System.out.println("Invalid character presented, check input.");
@@ -87,6 +92,8 @@ public class DayTwo {
 
     public static int roundValue(String rps) {
         int value = 0;
+
+        // Using classic switch statement, assign round value based on rps string
         switch (rps) {
             case "Rock":
                 value = 1;
@@ -114,12 +121,14 @@ public class DayTwo {
     }
 
     public static boolean isDraw(String opponent, String me) {
-
+        // returns true if strings are exact same, false otherwise
         return (opponent.equals(me));
     }
 
     public static int scoreRound(String opponent, String me) {
+        // Initialize score to my played string
         int score = roundValue(me);
+        // depending on result, add additional score
         if (isWin(opponent, me)) { score += 6; }
         else if (isDraw(opponent, me)) { score += 3; }
         return score;

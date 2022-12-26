@@ -96,13 +96,15 @@ public class DayThree {
     }
 
     public static char getSameItem(String leftCompartment, String rightCompartment) {
+        // Initialize return variable
         char errorGift = ' ';
 
-
+        // iterate through each compartment, comparing indexes to check for sameness
         for (int i = 0; i < leftCompartment.length(); i++) {
             for (int j = 0; j < rightCompartment.length(); j++) {
                 if (rightCompartment.charAt(j) == leftCompartment.charAt(i)) {
                     errorGift = leftCompartment.charAt(i);
+                    // once same char is found, break from loop
                     break;
                 }
             }
