@@ -4,13 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5c491ea5-e28b-4424-9a0e-39f6850fcb22" name="Changes" comment="Refactored DayThree, finished without bonus">
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/mains/dayFour/Range.java" afterDir="false" />
+    <list default="true" id="5c491ea5-e28b-4424-9a0e-39f6850fcb22" name="Changes" comment="Added comments to DayTwo and DayThree, halfway through DayFour">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/mains/DayFour.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/mains/dayFour/DayFour.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/mains/DayThree.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/mains/DayThree.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/mains/DayTwo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/mains/DayTwo.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -143,7 +138,14 @@
       <option name="project" value="LOCAL" />
       <updated>1671991510143</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Added comments to DayTwo and DayThree, halfway through DayFour">
+      <created>1672097059595</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1672097059595</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -162,6 +164,7 @@
     <MESSAGE value="Refactored DayOne, finished without bonus" />
     <MESSAGE value="Refactored DayTwo, finished without bonus" />
     <MESSAGE value="Refactored DayThree, finished without bonus" />
-    <option name="LAST_COMMIT_MESSAGE" value="Refactored DayThree, finished without bonus" />
+    <MESSAGE value="Added comments to DayTwo and DayThree, halfway through DayFour" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added comments to DayTwo and DayThree, halfway through DayFour" />
   </component>
 </project>
